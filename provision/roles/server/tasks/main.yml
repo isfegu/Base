@@ -1,0 +1,8 @@
+---
+- name: Set the hostname in /etc/hostname
+  shell: echo {{ server.hostname }} > /etc/hostname
+  when: server.hostname is defined
+
+- name: Set the hostname
+  shell: hostname {{ server.hostname }}
+  when: server.hostname is defined
