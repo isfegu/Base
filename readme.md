@@ -104,4 +104,5 @@ De esta manera tenemos centralizadas las _tasks_ de aprovisionamiento para ambos
 
 Modificamos el archivo _provision/environments/pro/pro_ especificando la IP del servidor externo.
 
-En la rama __external__ se puede ver este cambio reflejado y probado en un _droplet_ de DigitalOcean.
+En la rama __external__ se puede ver este cambio reflejado y probado en un _droplet_ de DigitalOcean. Es importante añadir la clave
+ssh pública de producción, que hemos creado al principio, en el servidor de producción. Cada proveedor tiene su manera de hacerlo.
