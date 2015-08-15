@@ -110,3 +110,10 @@ ssh pública de producción, que hemos creado al principio, en el servidor de pr
 ## WEBSERVER
 
 En la rama __webserver__ se puede ver el mismo esqueleto pero iniciando un servidor web con _nginx_ y _phpfpm_.
+
+## AGRADECIMIENTOS
+
+- http://phansible.com/
+- http://future500.nl/articles/2014/05/how-to-use-ansible-for-vagrant-and-production/
+- http://www.erikaheidi.com/blog/configuring-a-multistage-environment-with-ansible-and-vagrant
+- https://serversforhackers.com/an-ansible-tutorial
