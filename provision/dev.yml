@@ -3,3 +3,5 @@
   sudo: true
   roles:
     - server
+    - php
+    - nginx

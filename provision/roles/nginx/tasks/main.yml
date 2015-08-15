@@ -1,0 +1,16 @@
+---
+- name: Install Nginx
+  sudo: yes
+  apt: pkg=nginx state=latest
+
+- name: Create Web Root
+  file: dest={{ nginx.docroot }} mode=775 state=directory owner=www-data group=www-data
+
+- name: Copy a index page
+  sudo: yes
+  template: src=index.tpl dest={{ nginx.docroot }}/index.php owner=www-data group=www-data
+
+- name: Change default nginx site
+  sudo: yes
+  template: src=default.tpl dest=/etc/nginx/sites-available/default
+  notify: restart nginx

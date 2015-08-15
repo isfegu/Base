@@ -1,3 +1,8 @@
 ---
 server:
     hostname: 'webpro'
+nginx:
+    docroot: /var/srv/provision
+    servername: provision.pro
+php:
+    packages: [php5-cli, php5-intl, php5-mcrypt]

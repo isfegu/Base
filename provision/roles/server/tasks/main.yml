@@ -1,4 +1,8 @@
 ---
+- name: Update apt
+  sudo: yes
+  apt: update_cache=yes
+
 - name: Set the hostname in /etc/hostname
   shell: echo {{ server.hostname }} > /etc/hostname
   when: server.hostname is defined

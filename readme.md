@@ -106,3 +106,7 @@ Modificamos el archivo _provision/environments/pro/pro_ especificando la IP del 
 
 En la rama __external__ se puede ver este cambio reflejado y probado en un _droplet_ de DigitalOcean. Es importante añadir la clave
 ssh pública de producción, que hemos creado al principio, en el servidor de producción. Cada proveedor tiene su manera de hacerlo.
+
+## WEBSERVER
+
+En la rama __webserver__ se puede ver el mismo esqueleto pero iniciando un servidor web con _nginx_ y _phpfpm_.
