@@ -53,7 +53,7 @@ $ ssh-add ~/.ssh/pro
 Para comprobar que ansible puede acceder a las _boxes_ ejecutaremos:
 
 ``` bash
-$ ansible web -i provision/environments/dev/dev -m ping
+~/Projects/Provision/$ ansible web -i provision/environments/dev/dev -m ping
 ```
 Debiéndonos devolver lo siguiente:
 ```
@@ -64,7 +64,7 @@ Debiéndonos devolver lo siguiente:
 ```
 
 ``` bash
-$ ansible web -i provision/environments/pro/pro -m ping
+~/Projects/Provision/$ ansible web -i provision/environments/pro/pro -m ping
 ```
 Debiéndonos devolver lo siguiente:
 ```
@@ -81,13 +81,14 @@ Usamos _web_ puesto que está creado un _group_ con ese nombre para especificar 
 En función de que queramos aprovisionar *dev* o *pro* ejecutaremos:
 
 Para *dev*
-
-$ ansible-playbook -i environments/dev/dev provision/dev.yml
+``` bash
+~/Projects/Provision/$ ansible-playbook -i provision/environments/dev/dev provision/dev.yml
+```
 
 Para *pro*
-
-$ ansible-playbook -i environments/pro/pro provision/pro.yml
-
+``` bash
+~/Projects/Provision/$ ansible-playbook -i provision/environments/pro/pro provision/pro.yml
+```
 Lo único que hace este esqueleto es asignar el _hostname_ de cada _host_ pero nos da pie a ver el uso de las variables de ansible especificadas en cada una de los _environments_ en:
 
 - _environments/dev/group_vars/web.yml_
@@ -100,4 +101,7 @@ Se puede ver el _task_ que cambia el _hostname_ en:
 De esta manera tenemos centralizadas las _tasks_ de aprovisionamiento para ambos _environments_ pero se especifican diferentes valores en función de las variables especificadas para cada uno.
 
 ## USAR UN SERVIDOR EXTERNO COMO PRODUCCIÓN
-TO DO
+
+Modificamos el archivo _provision/environments/pro/pro_ especificando la IP del servidor externo.
+
+En la rama __external__ se puede ver este cambio reflejado y probado en un _droplet_ de DigitalOcean.
