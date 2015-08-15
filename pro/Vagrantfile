@@ -18,6 +18,6 @@ Vagrant.configure("2") do |config|
     config.vm.network :forwarded_port, guest: 22, host: 2221, id: 'ssh'
     config.ssh.forward_agent = true
 
-    config.vm.provision "file", source: "../common/keys/pro.pub", destination: "/home/vagrant/.ssh/pro.pub"
-    config.vm.provision "shell", inline: "/bin/cat /home/vagrant/.ssh/pro.pub >> /home/vagrant/.ssh/authorized_keys"
+    config.vm.provision "file", source: "../common/keys/faemino_pro.pub", destination: "/home/vagrant/.ssh/faemino_pro.pub"
+    config.vm.provision "shell", inline: "/bin/cat /home/vagrant/.ssh/faemino_pro.pub >> /home/vagrant/.ssh/authorized_keys"
 end
