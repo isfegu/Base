@@ -53,28 +53,28 @@ $ ssh-add ~/.ssh/pro
 Para comprobar que ansible puede acceder a las _boxes_ ejecutaremos:
 
 ``` bash
-~/Projects/Provision/$ ansible web -i provision/environments/dev/dev -m ping
+~/Projects/Provision/$ ansible server -i provision/environments/dev/dev -m ping
 ```
 Debiéndonos devolver lo siguiente:
 ```
 10.10.10.10.10 | success >> {
-    "changed": false, 
+    "changed": false,
     "ping": "pong"
 }
 ```
 
 ``` bash
-~/Projects/Provision/$ ansible web -i provision/environments/pro/pro -m ping
+~/Projects/Provision/$ ansible server -i provision/environments/pro/pro -m ping
 ```
 Debiéndonos devolver lo siguiente:
 ```
 10.10.10.10.11 | success >> {
-    "changed": false, 
+    "changed": false,
     "ping": "pong"
 }
 ```
 
-Usamos _web_ puesto que está creado un _group_ con ese nombre para especificar los hosts tanto de _dev_ como _pro_. Ver archivos _provision/environments/pro/pro_ y _provision/environments/dev/dev_.
+Usamos _server_ puesto que está creado un _group_ con ese nombre para especificar los hosts tanto de _dev_ como _pro_. Ver archivos _provision/environments/pro/pro_ y _provision/environments/dev/dev_.
 
 ## CONFIGURACIÓN DE LOS SERVIDORES MEDIANTE ANSIBLE
 
@@ -91,8 +91,8 @@ Para *pro*
 ```
 Lo único que hace este esqueleto es asignar el _hostname_ de cada _host_ pero nos da pie a ver el uso de las variables de ansible especificadas en cada una de los _environments_ en:
 
-- _environments/dev/group_vars/web.yml_
-- _environments/pro/group_vars/web.yml_
+- _environments/dev/group_vars/server.yml_
+- _environments/pro/group_vars/server.yml_
 
 Se puede ver el _task_ que cambia el _hostname_ en:
 
@@ -103,13 +103,6 @@ De esta manera tenemos centralizadas las _tasks_ de aprovisionamiento para ambos
 ## USAR UN SERVIDOR EXTERNO COMO PRODUCCIÓN
 
 Modificamos el archivo _provision/environments/pro/pro_ especificando la IP del servidor externo.
-
-En la rama __external__ se puede ver este cambio reflejado y probado en un _droplet_ de DigitalOcean. Es importante añadir la clave
-ssh pública de producción, que hemos creado al principio, en el servidor de producción. Cada proveedor tiene su manera de hacerlo.
-
-## WEBSERVER
-
-En la rama __webserver__ se puede ver el mismo esqueleto pero iniciando un servidor web con _nginx_ y _phpfpm_.
 
 ## AGRADECIMIENTOS
 
