@@ -1,4 +1,2 @@
-_demo
 common/keys/*.pub
-dev/.vagrant
-pro/.vagrant
+box/.vagrant
