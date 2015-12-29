@@ -25,4 +25,4 @@
 
 - name: Configure the timezone
   template: src=timezone.tpl dest=/etc/timezone
-  notify: update tzdata
+  notify: Update tzdata
