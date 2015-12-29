@@ -14,7 +14,7 @@ $ sudo apt-get ansible
 ```
 
 ## CLONADO DEL PROYECTO
-Cada cual clonará el proyecto donde mejor le convenga, para este tutorial será en _~/Projects/Provision_
+Cada cual clonará el proyecto donde mejor le convenga, para este tutorial será en _~/Projects/Provision/Base_
 
 ## CREACIÓN DE CLAVES
 Para poder usar _ansible_ deberemos crear dos claves ssh, una para desarrollo y otra para producción.
@@ -39,15 +39,14 @@ $ ssh-add ~/.ssh/pro
 
 ## INICIAR LAS MÁQUINAS VIRTUALES
 ``` bash
-~/Projects/Provision/dev$ vagrant up
-~/Projects/Provision/dev$ vagrant provision
+~/Projects/Provision/Base/box$ vagrant up
 ```
 
 ## PROBANDO LA COMUNICACIÓN CON ANSIBLE
 Para comprobar que _ansible_ puede acceder a la _box_ _dev_ ejecutaremos:
 
 ``` bash
-~/Projects/Provision/$ ansible server -i provision/environments/dev/dev -m ping
+~/Projects/Provision/Base$ ansible server -i provision/environments/dev/dev -m ping
 ```
 
 Debiéndonos devolver lo siguiente:
@@ -66,7 +65,7 @@ Ver archivos _provision/environments/pro/pro_ y _provision/environments/dev/dev_
 Para aprovisionar *dev* ejecutaremos:
 
 ``` bash
-~/Projects/Provision/$ ansible-playbook -i provision/environments/dev/dev provision/dev.yml
+~/Projects/Provision/Base$ ansible-playbook -i provision/environments/dev/dev provision/dev.yml
 ```
 Lo único que hace este esqueleto es asignar el _hostname_ de cada _host_ pero nos da pie a ver el uso de las variables de ansible especificadas en cada una de los _environments_ en:
 
@@ -84,7 +83,7 @@ Modificamos el archivo _provision/environments/pro/pro_ especificando la IP del 
 
 ### PROBANDO LA COMUNICACIÓN CON ANSIBLE
 ``` bash
-~/Projects/Provision/$ ansible server -i provision/environments/pro/pro -m ping
+~/Projects/Provision/Base$ ansible server -i provision/environments/pro/pro -m ping
 ```
 
 Debiéndonos devolver lo siguiente:
@@ -99,7 +98,7 @@ Debiéndonos devolver lo siguiente:
 Para aprovisionar *dev* ejecutaremos:
 
 ``` bash
-~/Projects/Provision/$ ansible-playbook -i provision/environments/pro/pro provision/pro.yml
+~/Projects/Provision/Base$ ansible-playbook -i provision/environments/pro/pro provision/pro.yml
 ```
 
 ## AGRADECIMIENTOS

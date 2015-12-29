@@ -1,3 +1,4 @@
 ---
 server:
-    hostname: 'serverpro'
+    hostname: 'pro'
+    packages: [vim, unattended-upgrades]

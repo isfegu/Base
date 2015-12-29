@@ -1,2 +1,2 @@
-[web]
+[server]
 10.10.10.11 ansible_ssh_user=vagrant

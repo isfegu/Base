@@ -1,8 +1,28 @@
 ---
+- name: Update apt
+  apt: update_cache=yes
+
+- name: Upgrade apt
+  apt: upgrade=safe
+
+- name: Install Extra Packages
+  apt: pkg={{ item }} state=latest
+  with_items: server.packages
+  when: server.packages is defined
+
+- name: Adjust APT update intervals
+  template: src=periodic.tpl dest=/etc/apt/apt.conf.d/10periodic
+
 - name: Set the hostname in /etc/hostname
-  shell: echo {{ server.hostname }} > /etc/hostname
+  hostname: name={{ server.hostname }}
   when: server.hostname is defined
 
-- name: Set the hostname
-  shell: hostname {{ server.hostname }}
-  when: server.hostname is defined
+- name: Generate locale
+  locale_gen: name={{config.locale}} state=present
+
+- name: Set default system language pack
+  shell: update-locale LANG={{config.locale}} LC_ALL=$locale
+
+- name: Configure the timezone
+  template: src=timezone.tpl dest=/etc/timezone
+  notify: update tzdata

@@ -1,0 +1,4 @@
+---
+config:
+    timezone: Europe/Madrid
+    locale: es_ES.UTF-8
